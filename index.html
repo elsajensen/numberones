@@ -1,0 +1,290 @@
+<html>
+<head>
+	<title>International Number Ones</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style>
+		body {
+			max-width: 100%;
+		}
+
+		h1 {
+			font-size: 22px;
+			font-family: 'Roboto', sans-serif;
+			color: black;
+			font-weight: normal;
+			text-align: left;
+			margin-left: 3%;
+			margin-top: 3%;
+			letter-spacing: 2px;
+		}
+
+		h2 {
+			color: black;
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px; 
+      text-align: left;
+		}
+
+		h3 {
+			font-size: 14px;
+			font-family: 'Open Sans', sans-serif;
+			color: black;
+			font-weight: normal;
+			text-align: left;
+			margin-left: 3%;
+			margin-top: 0%;
+			width: 50%;
+		}
+
+    #worldmap {
+      width: 60%;
+      margin-left: 20%;
+      margin-right: 20%;
+      margin-top: -2%;
+      position: relative;
+      z-index: -1;
+    }
+
+		#mySelect {
+        width: 22%;
+    		border: none;
+   		 	margin-left: 5%;
+   		 	float: left;
+        margin-bottom: 3%;
+   		 	background-color: #f1f1f1;
+    		border: none;
+    		border-radius: 4px;
+    		padding: 8px 24px;
+    		margin: 15px 2px;
+    		cursor: pointer;
+		}
+
+		#container1, #container2, #container3, #container4 {
+			font-size: 15px;
+			font-family: 'Open Sans', sans-serif;
+      text-align: left;
+			color: black;
+			float: left;
+      width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-top: 4%;
+      position: relative;
+      overflow: hidden;
+      line-height: normal;
+		}
+
+		form {
+			margin-left: 3%;
+      margin-top: -5%;
+		}
+
+		.stats {
+			display: none;
+			margin-bottom: 10%;
+		}
+
+		#txt {
+			font-family: 'Open Sans', sans-serif;
+			font-size: 12px;
+			font-weight: normal;
+			position: absolute;
+			top: 70px;
+			right: 5%;
+		}
+
+
+
+	</style>
+
+</head>
+<body>
+
+<h1><strong>International Number Ones</strong></h1>
+    <h3>Every country is the best at something. Select a subject in the menu bar below to compare the different countries of the world.</h3>
+
+<div id="start">
+    <img src="worldmap.jpg" id="worldmap">
+</div>
+
+<form action="">
+  <select id="mySelect" onchange="myFunction()">
+    <option value="start">Select Comparison Subject</option>
+    <option value="population">Population</option>
+    <option value="income">Average Annual Income</option>
+    <option value="nobelprizes">Number of Nobel Prizes</option>
+    <option value="happiness">Happiness</option>
+  </select>
+  <br><br>
+</form>
+
+<div id="container1" class="stats">
+	<h2 id="population">Citizen Population 2017</h2>
+        <canvas id="myChart1" width="70%" height="50%"></canvas>
+<script>
+  new Chart(document.getElementById("myChart1"), {
+  type: 'doughnut',
+  data: {
+      labels: ["Canada", "US", "Mexico", "Cuba", "Guatemala", "El Salvador", "Puerto Rico", "Costa Rica", "Honduras", "Suriname", "Panama", "Colombia", "Venezuela", "Ecuador", "Brazil", "Peru", "Bolivia", "Uruguay", "Chile", "Paraguay", "Argentina", "Iceland", "Sweden", "Ireland", "Norway", "Finland", "Denmark", "Estonia", "Latvia", "Lithuania", "Poland", "Kazakstan", "Russia", "Mongolia", "Switzerland", "Austria", "Germany", "United Kingdom", "France", "Spain", "Netherlands", "Croatia", "North Korea", "China", "South Korea", "Japan", "Taiwan", "India", "Afghanistan", "Thailand", "Vietnam", "Philippines", "Malaysia", "Papa New Guinea", "Fiji", "Australia", "New Zealand", "Indonesia", "Singapore", "Rwanda", "Pakistan", "Bulgaria", "Greece", "Italy", "Portugal", "Marocco", "Turkey", "Chad", "Saudi Arabia", "Sierra Leone", "Kenya", "Uganda", "Nigeria", "Togo", "South Sudan", "Botswana", "Zimbabwe", "Angola", "South Africa", "Namibia", "Swaziland", "Mozambique", "Madagascar", "Tanzania"],
+      datasets: [
+    { 
+      label: "Population (millions)",
+      backgroundColor: ["#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d"],
+      data: [37, 326, 131, 12, 17, 6, 4, 5, 10, 0.5, 4, 49, 32, 17, 211, 32, 11, 3.5, 18, 7, 44, 0.3, 10, 5, 5.3, 5.5, 5.7, 1.3, 2, 3, 38, 18.5, 144, 3, 8.5, 9, 81, 66, 65, 46, 17, 4.2, 24, 1409, 51, 126, 23.5, 1340, 36, 69, 96.5, 105, 32, 8, 0.9, 25, 5, 266, 6, 12.5, 208, 7.5, 11, 59, 10, 36, 82, 15.5, 33.5, 8, 51, 44, 196, 8, 13, 2.3, 17, 31, 56, 2.5, 1.3, 30.5, 59,59]
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: ""
+    }
+  }
+});
+</script>
+</div>
+
+<div id="container2" class="stats">
+	<h2 id="income">Average Annual Income 2017 ($)</h2>
+          <canvas id="myChart2" width="70%" height="90%"></canvas>
+<script>
+  new Chart(document.getElementById("myChart2"), {
+  type: 'horizontalBar',
+  data: {
+      labels: ["Canada", "US", "Mexico", "Cuba", "Guatemala", "El Salvador", "Puerto Rico", "Costa Rica", "Honduras", "Suriname", "Panama", "Colombia", "Venezuela", "Ecuador", "Brazil", "Peru", "Bolivia", "Uruguay", "Chile", "Paraguay", "Argentina", "Iceland", "Sweden", "Ireland", "Norway", "Finland", "Denmark", "Estonia", "Latvia", "Lithuania", "Poland", "Kazakstan", "Russia", "Mongolia", "Switzerland", "Austria", "Germany", "United Kingdom", "France", "Spain", "Netherlands", "Croatia", "North Korea", "China", "South Korea", "Japan", "Taiwan", "India", "Afghanistan", "Thailand", "Vietnam", "Philippines", "Malaysia", "Papa New Guinea", "Fiji", "Australia", "New Zealand", "Indonesia", "Singapore", "Rwanda", "Pakistan", "Bulgaria", "Greece", "Italy", "Portugal", "Marocco", "Turkey", "Chad", "Saudi Arabia", "Sierra Leone", "Kenya", "Uganda", "Nigeria", "Togo", "South Sudan", "Botswana", "Zimbabwe", "Angola", "South Africa", "Namibia", "Swaziland", "Mozambique", "Madagascar", "Tanzania"],
+      datasets: [
+    { 
+      label: "Average Annual Income ($)",
+      backgroundColor: ["#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d"],
+      data: [76000, 72000, 12800, 300, 2000, 14000, 18000, 24000, 7000, 14000, 2500, 16000, 18000, 14000, 25000, 16000, 6700, 8700, 16300, 12600, 5000, 34000, 45200, 42000, 65000, 34000, 64000, 1500, 900, 750, 15000, 24000, 6200, 6700, 100000, 49000, 45000, 36600, 29700, 37700, 36000, 15000, 1500, 1200, 25800, 2000, 15800, 1600, 1800, 14400, 12000, 7000, 8000, 5000, 4000, 60000, 40000, 14000, 12000, 14000, 1500, 2900, 3000, 27900, 20000, 15000, 500, 800, 20000, 14000, 14000, 7000, 7000, 6000, 13000, 7000, 4000, 4000, 5600, 2500, 1300, 3500, 5900]
+      }
+    ]
+  },
+  options: {
+    legend: {display:false},
+    title: {
+      display: true,
+      text: ""
+    }
+  }
+});
+</script>
+</div>
+
+<div id="container3" class="stats">
+  <h2 id="nobelprizes">Number of Nobel Prizes</h2>
+          <canvas id="myChart3" width="70%" height="30%"></canvas>
+<script>
+  new Chart(document.getElementById("myChart3"), {
+  type: 'pie',
+  data: {
+      labels: ["Canada", "US", "Mexico", "Cuba", "Guatemala", "El Salvador", "Puerto Rico", "Costa Rica", "Honduras", "Suriname", "Panama", "Colombia", "Venezuela", "Ecuador", "Brazil", "Peru", "Bolivia", "Uruguay", "Chile", "Paraguay", "Argentina", "Iceland", "Sweden", "Ireland", "Norway", "Finland", "Denmark", "Estonia", "Latvia", "Lithuania", "Poland", "Kazakstan", "Russia", "Mongolia", "Switzerland", "Austria", "Germany", "United Kingdom", "France", "Spain", "Netherlands", "Croatia", "North Korea", "China", "South Korea", "Japan", "Taiwan", "India", "Afghanistan", "Thailand", "Vietnam", "Philippines", "Malaysia", "Papa New Guinea", "Fiji", "Australia", "New Zealand", "Indonesia", "Singapore", "Rwanda", "Pakistan", "Bulgaria", "Greece", "Italy", "Portugal", "Marocco", "Turkey", "Chad", "Saudi Arabia", "Sierra Leone", "Kenya", "Uganda", "Nigeria", "Togo", "South Sudan", "Botswana", "Zimbabwe", "Angola", "South Africa", "Namibia", "Swaziland", "Mozambique", "Madagascar", "Tanzania"],
+      datasets: [
+    { 
+      label: "Number of Nobel Prizes",
+      backgroundColor: ["#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d","#88b43e", "#9ec6e0", "#ff5e3e","#23943d","#a6dfff","#e27f24", "#f1643e", "#4dabe0","#ff7f66","#e8a42d"],
+      data: [25, 371, 3, 0, 2, 0, 0, 1, 0, 0, 0, 2, 1, 0, 0, 1, 0, 0, 2, 0, 5, 1, 31, 8, 13, 5, 13, 0, 0, 3, 14, 0, 26, 0, 26, 21, 107, 127, 68, 7, 21, 1, 0, 8, 1, 26, 0, 10, 0, 0, 1, 0, 0, 0, 0, 12, 0, 0, 0, 0, 2, 1, 2, 20, 4, 0, 2, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0]
+      }
+    ]
+  },
+  options: {
+    legend: {display:false},
+    title: {
+      display: true,
+      text: ""
+    }
+  }
+});
+</script>
+</div>
+
+<div id="container4" class="stats">
+  <h2 id="happiness">Top 10 Happiest Countries 2013-2017</h2>
+          <canvas id="myChart4" width="70%" height="30%"></canvas>
+<script>
+  new Chart(document.getElementById("myChart4"), {
+  type: 'line',
+  data: {
+      labels: [2013, 2014, 2015, 2016, 2017],
+      datasets: [{
+          data: [4,5,5,6,7],
+          label: "Canada",
+          borderColor: "#f1643e",
+          fill: false
+        }, {
+          data: [3,3,2,2,1],
+          label: "Norway",
+          borderColor: "#4dabe0",
+          fill: false
+        }, {
+          data: [5,4,3,2,2],
+          label: "Denmark",
+          borderColor: "#ff7f66",
+          fill: false
+        }, {
+          data: [4,3,3,2,3],
+          label: "Iceland",
+          borderColor: "#e8a42d",
+          fill: false
+        }, {
+          data: [2,2,4,3,4],
+          label: "Switzerland",
+          borderColor: "#88b43e",
+          fill: false
+        }, {
+          data: [6,5,4,6,5],
+          label: "Finland",
+          borderColor: "#9ec6e0",
+          fill: false
+        }, {
+          data: [3,2,4,1,6],
+          label: "Netherlands",
+          borderColor: "#ff5e3e",
+          fill: false
+        }, {
+          data: [5,4,3,2,8],
+          label: "Canada",
+          borderColor: "#23943d",
+          fill: false
+        }, {
+          data: [4,3,3,2,9],
+          label: "New Zealand",
+          borderColor: "#a6dfff",
+          fill: false
+        }, {
+          data: [2,2,4,3,10],
+          label: "Sweden",
+          borderColor: "#e27f24",
+          fill: false
+        }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: ""
+    }
+  }
+});
+</script>
+</div>
+
+<script>
+	function myFunction() {
+	$(".stats").hide();
+    var x = document.getElementById("mySelect");
+    var i = x.selectedIndex;
+    console.log(i);
+    if (i != 0) {
+    	document.getElementById("container"+i).style.display = "block";
+    }
+	}
+		
+</script>
+
+</body>
+</html>
